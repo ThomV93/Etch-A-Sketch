@@ -1,0 +1,15 @@
+@font-face {
+    font-family: neonTubes;
+    src: url("../Fonts/NeonTubes.otf") format("opentype");
+}
+
+body{
+    background: linear-gradient(-90deg, #000000,#1d185a );
+}
+
+h1 {
+    font-family: neonTubes;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #d84979, 0 0 20px #d84979, 0 0 25px #d84979, 0 0 30px #d84979, 0 0 35px #d84979;
+}
