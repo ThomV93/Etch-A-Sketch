@@ -1,15 +1,74 @@
 @font-face {
     font-family: neonTubes;
     src: url("../Fonts/NeonTubes.otf") format("opentype");
+    box-sizing: border-box;
 }
 
 body{
     background: linear-gradient(-90deg, #000000,#1d185a );
+    font-family: neonTubes;
 }
 
 h1 {
-    font-family: neonTubes;
     text-align: center;
     color: #fff;
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #d84979, 0 0 20px #d84979, 0 0 25px #d84979, 0 0 30px #d84979, 0 0 35px #d84979;
+}
+
+p {
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #d84979, 0 0 20px #d84979, 0 0 25px #d84979, 0 0 30px #d84979, 0 0 35px #d84979;
+}
+
+#btns-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 12vh;
+    width: 100vw;
+}
+
+#color-btns-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 3vh;
+    width: 500px;
+    margin-right: -50px;
+}
+
+.color-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-color: #fff;
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fff;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fff;
+    color: #fff;
+    border-radius: 50%;
+    width: 85px;
+    height: 85px;
+}
+
+#grid-btns-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 3vh;
+    width: 500px;
+    margin-left: -50px;
+}
+
+.grid-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-color: #fff;
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #3c96eb, 0 0 20px #3c96eb, 0 0 25px #3c96eb, 0 0 30px #3c96eb, 0 0 35px #3c96eb;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #3c96eb, 0 0 20px #3c96eb, 0 0 25px #3c96eb, 0 0 30px #3c96eb, 0 0 35px #3c96eb;
+    color: #fff;
+    border-radius: 50%;
+    width: 85px;
+    height: 85px;
 }
