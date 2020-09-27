@@ -1,3 +1,8 @@
+:root {
+    --grid-rows: 1;
+    --grid-cols: 1;
+}
+
 @font-face {
     font-family: neonTubes;
     src: url("../Fonts/NeonTubes.otf") format("opentype");
@@ -7,6 +12,8 @@
 body{
     background: linear-gradient(-90deg, #000000,#1d185a );
     font-family: neonTubes;
+    height: 100vh;
+    width: 100vw;
 }
 
 h1 {
@@ -71,4 +78,21 @@ p {
     border-radius: 50%;
     width: 85px;
     height: 85px;
+}
+
+#grid-container {
+    display: grid;
+    grid-template-rows: repeat(var(--grid-rows), 1fr);
+    grid-template-columns: repeat(var(--grid-cols), 1fr);
+    box-sizing: border-box;
+    margin-top: 50px;
+    width: 900px;
+    height: 500px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.grid-item {
+    border: 1px solid #000;
+    background-color: #fff;
 }
