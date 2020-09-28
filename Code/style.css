@@ -96,3 +96,11 @@ p {
     border: 1px solid #000;
     background-color: #fff;
 }
+
+button {
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #3c96eb, 0 0 20px #3c96eb, 0 0 25px #3c96eb, 0 0 30px #3c96eb, 0 0 35px #3c96eb;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #3c96eb, 0 0 20px #3c96eb, 0 0 25px #3c96eb, 0 0 30px #3c96eb, 0 0 35px #3c96eb;
+    color: #fff;
+    width: 85px;
+    height: 85px;
+}
