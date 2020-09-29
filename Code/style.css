@@ -32,7 +32,7 @@ p {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 12vh;
+    height: 13vh;
     width: 100vw;
 }
 
@@ -98,9 +98,14 @@ p {
 }
 
 button {
-    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #3c96eb, 0 0 20px #3c96eb, 0 0 25px #3c96eb, 0 0 30px #3c96eb, 0 0 35px #3c96eb;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #3c96eb, 0 0 20px #3c96eb, 0 0 25px #3c96eb, 0 0 30px #3c96eb, 0 0 35px #3c96eb;
+    position: relative;
+    font-family: neonTubes;
+    background-color: transparent;
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #d84979, 0 0 20px #d84979, 0 0 25px #d84979, 0 0 30px #d84979, 0 0 35px #d84979;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #d84979, 0 0 20px #d84979, 0 0 25px #d84979, 0 0 30px #d84979, 0 0 35px #d84979;
     color: #fff;
-    width: 85px;
-    height: 85px;
+    width: 90px;
+    height: 50px;
+    border-radius: 10px;
+    margin-top: auto;
 }
