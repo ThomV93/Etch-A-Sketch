@@ -1,5 +1,5 @@
 //create and cash all variables
-let color
+let bgColor
 const black_btn = document.getElementById("black");
 const white_btn = document.getElementById("white");
 const rainbow_btn = document.getElementById("rainbow");
@@ -8,7 +8,7 @@ const thirtyTwo_btn = document.getElementById("32x");
 const sixtyFour_btn = document.getElementById("64x");
 const gridContainer_div = document.getElementById("grid-container");
 const btnsContainer_div = document.getElementById("btns-container");
-const gridBtnsContainer_div = document.getElementById("grid-btns-container")
+const colorBtnsContainer_div = document.getElementById("color-btns-container")
 
 //create a dynamic grid based on the user choice
 function createGrid(rows, cols) {
@@ -17,7 +17,7 @@ function createGrid(rows, cols) {
     for (i = 0; i < (rows*cols); i++) {
         let cell = document.createElement("div");
         cell.addEventListener("mouseover", () => {
-            cell.style.backgroundColor = color;
+            cell.style.backgroundColor = bgColor;
         })
         gridContainer_div.appendChild(cell).className = "grid-item";
     };
@@ -26,15 +26,15 @@ function createGrid(rows, cols) {
 //adds event listeners for the color buttons
 function colorBtns() {
     black_btn.addEventListener("click", e => {
-        color = `${e.target.id}`;
+        bgColor = `${e.target.id}`;
     });
 
     white_btn.addEventListener("click", e => {
-        color = `${e.target.id}`;
+        bgColor = `${e.target.id}`;
     });
 
     rainbow_btn.addEventListener("click", () => {
-        color = `${generateRandomColor()}`;
+        bgColor = `${generateRandomColor()}`;
     });
 };
 
@@ -75,7 +75,7 @@ function refreshGame() {
 function replayButton() {
     let replayBtn = document.createElement("button");
     replayBtn.innerHTML = "Reset"
-    btnsContainer_div.insertBefore(replayBtn, gridBtnsContainer_div);
+    btnsContainer_div.insertBefore(replayBtn, colorBtnsContainer_div);
     replayBtn.addEventListener("click", refreshGame);
 }
 
