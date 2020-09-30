@@ -1,5 +1,9 @@
 //create and cash all variables
 let bgColor
+const btnsContainer_div = document.getElementById("btns-container");
+const colorBtnsContainer_div = document.getElementById("color-btns-container")
+const gridBtns_div = document.querySelectorAll(".grid-btns");
+const colorBtns_div = document.querySelectorAll(".color-btns");
 const black_btn = document.getElementById("black");
 const white_btn = document.getElementById("white");
 const rainbow_btn = document.getElementById("rainbow");
@@ -7,8 +11,7 @@ const sixteen_btn = document.getElementById("16x");
 const thirtyTwo_btn = document.getElementById("32x");
 const sixtyFour_btn = document.getElementById("64x");
 const gridContainer_div = document.getElementById("grid-container");
-const btnsContainer_div = document.getElementById("btns-container");
-const colorBtnsContainer_div = document.getElementById("color-btns-container")
+
 
 //create a dynamic grid based on the user choice
 function createGrid(rows, cols) {
@@ -39,19 +42,23 @@ function colorBtns() {
 };
 
 colorBtns();
+
 //adds event listeners for the grid buttons
 function gridBtns() {
     sixteen_btn.addEventListener("click", function() {
+        this.classList.add("playing");
         createGrid(16, 16);
-    });
+    }, {once : true});
 
     thirtyTwo_btn.addEventListener("click", function() {
+        this.classList.add("playing");
         createGrid(32, 32);
-    });
+    }, {once : true});
 
     sixtyFour_btn.addEventListener("click", function() {
+        this.classList.add("playing");
         createGrid(64, 64);
-    });
+    }, {once : true});
 };
 
 gridBtns();
@@ -64,7 +71,7 @@ function generateRandomColor() {
       color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
-  }
+}
 
 //refresh window
 function refreshGame() {
@@ -80,3 +87,12 @@ function replayButton() {
 }
 
 replayButton();
+
+//remove the click event transition after the transform ends
+function removeTransition(e) {
+    if (e.propertyName !== "transform") return; //skip the property name if it is not a transform
+    this.classList.remove("playing");
+}
+
+//event to remove the transition
+gridBtns_div.forEach(btn => btn.addEventListener("transitionend", removeTransition));

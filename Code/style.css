@@ -1,6 +1,9 @@
 :root {
     --grid-rows: 1;
     --grid-cols: 1;
+    --pink-neon: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #d84979, 0 0 20px #d84979, 0 0 25px #d84979, 0 0 30px #d84979, 0 0 35px #d84979;
+    --blue-neon: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #3c96eb, 0 0 20px #3c96eb, 0 0 25px #3c96eb, 0 0 30px #3c96eb, 0 0 35px #3c96eb;
+    --white-neon: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fff;
 }
 
 @font-face {
@@ -17,13 +20,13 @@ body{
 h1 {
     text-align: center;
     color: #fff;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #d84979, 0 0 20px #d84979, 0 0 25px #d84979, 0 0 30px #d84979, 0 0 35px #d84979;
+    text-shadow: var(--pink-neon);
 }
 
 p {
     text-align: center;
     color: #fff;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #d84979, 0 0 20px #d84979, 0 0 25px #d84979, 0 0 30px #d84979, 0 0 35px #d84979;
+    text-shadow: var(--pink-neon);
 }
 
 #btns-container {
@@ -50,12 +53,13 @@ p {
     justify-content: center;
     align-items: center;
     border-color: #fff;
-    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fff;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fff;
+    box-shadow: var(--white-neon);
+    text-shadow: var(--white-neon);
     color: #fff;
     border-radius: 50%;
     width: 85px;
     height: 85px;
+    transition: all .06s;
 }
 
 #grid-btns-container {
@@ -72,12 +76,13 @@ p {
     justify-content: center;
     align-items: center;
     border-color: #fff;
-    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #3c96eb, 0 0 20px #3c96eb, 0 0 25px #3c96eb, 0 0 30px #3c96eb, 0 0 35px #3c96eb;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #3c96eb, 0 0 20px #3c96eb, 0 0 25px #3c96eb, 0 0 30px #3c96eb, 0 0 35px #3c96eb;
+    box-shadow: var(--blue-neon);
+    text-shadow: var(--blue-neon);
     color: #fff;
     border-radius: 50%;
     width: 85px;
     height: 85px;
+    transition: all .06s;
 }
 
 #grid-container {
@@ -101,11 +106,17 @@ button {
     position: relative;
     font-family: neonTubes;
     background-color: transparent;
-    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #d84979, 0 0 20px #d84979, 0 0 25px #d84979, 0 0 30px #d84979, 0 0 35px #d84979;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #d84979, 0 0 20px #d84979, 0 0 25px #d84979, 0 0 30px #d84979, 0 0 35px #d84979;
+    box-shadow: var(--pink-neon);
+    text-shadow: var(--pink-neon);
     color: #fff;
     width: 90px;
     height: 50px;
     border-radius: 10px;
     margin-top: auto;
+}
+
+.playing {
+    transform: scale(1.1);
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #3c96eb, 0 0 20px #3c96eb, 0 0 25px #3c96eb, 0 0 30px #3c96eb, 0 0 35px #3c96eb;
+    border: 4px solid rgb(255,255,255,0.5);
 }
