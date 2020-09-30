@@ -26,23 +26,6 @@ function createGrid(rows, cols) {
     };
 };
 
-//adds event listeners for the color buttons
-function colorBtns() {
-    black_btn.addEventListener("click", e => {
-        bgColor = `${e.target.id}`;
-    });
-
-    white_btn.addEventListener("click", e => {
-        bgColor = `${e.target.id}`;
-    });
-
-    rainbow_btn.addEventListener("click", () => {
-        bgColor = `${generateRandomColor()}`;
-    });
-};
-
-colorBtns();
-
 //adds event listeners for the grid buttons
 function gridBtns() {
     sixteen_btn.addEventListener("click", function() {
@@ -62,6 +45,26 @@ function gridBtns() {
 };
 
 gridBtns();
+
+//adds event listeners for the color buttons
+function colorBtns() {
+    black_btn.addEventListener("click", e => {
+        black_btn.classList.add("playing");
+        bgColor = `${e.target.id}`;
+    });
+
+    white_btn.addEventListener("click", e => {
+        white_btn.classList.add("playing");
+        bgColor = `${e.target.id}`;
+    });
+
+    rainbow_btn.addEventListener("click", () => {
+        rainbow_btn.classList.add("playing");
+        bgColor = `${generateRandomColor()}`;
+    });
+};
+
+colorBtns();
 
 //generate random color
 function generateRandomColor() {
@@ -96,3 +99,4 @@ function removeTransition(e) {
 
 //event to remove the transition
 gridBtns_div.forEach(btn => btn.addEventListener("transitionend", removeTransition));
+colorBtns_div.forEach(btn => btn.addEventListener("transitionend", removeTransition));
