@@ -60,7 +60,7 @@ function colorBtns() {
     rainbow_btn.addEventListener("click", () => {
         rainbow_btn.classList.add("playing");
         for (i = 0; i < gridCells.length; i++) {
-            gridCells[i].onmouseover = function(e) {
+            gridCells[i].onmouseover = () => {
                 var letters = '0123456789ABCDEF';
                 var color = '#';
                 for (var i = 0; i < 6; i++) {
@@ -68,8 +68,7 @@ function colorBtns() {
                 }
                 bgColor = color;
                 return bgColor;
-            }
-            
+            }      
         }
     });
 };

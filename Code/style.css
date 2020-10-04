@@ -59,7 +59,7 @@ p {
     border-radius: 50%;
     width: 85px;
     height: 85px;
-    transition: all .06s;
+    transition: all .03s;
 }
 
 #grid-btns-container {
@@ -82,7 +82,7 @@ p {
     border-radius: 50%;
     width: 85px;
     height: 85px;
-    transition: all .06s;
+    transition: all .03s;
 }
 
 #grid-container {
