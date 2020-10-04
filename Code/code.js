@@ -11,6 +11,7 @@ const sixteen_btn = document.getElementById("16x");
 const thirtyTwo_btn = document.getElementById("32x");
 const sixtyFour_btn = document.getElementById("64x");
 const gridContainer_div = document.getElementById("grid-container");
+const gridCells = document.getElementsByClassName("grid-item");
 
 
 //create a dynamic grid based on the user choice
@@ -19,9 +20,7 @@ function createGrid(rows, cols) {
     gridContainer_div.style.setProperty("--grid-cols", cols);
     for (i = 0; i < (rows*cols); i++) {
         let cell = document.createElement("div");
-        cell.addEventListener("mouseover", () => {
-            cell.style.backgroundColor = bgColor;
-        })
+        cell.addEventListener("mouseover", () => { cell.style.backgroundColor = bgColor;})
         gridContainer_div.appendChild(cell).className = "grid-item";
     };
 };
@@ -60,21 +59,22 @@ function colorBtns() {
 
     rainbow_btn.addEventListener("click", () => {
         rainbow_btn.classList.add("playing");
-        bgColor = `${generateRandomColor()}`;
+        for (i = 0; i < gridCells.length; i++) {
+            gridCells[i].onmouseover = function(e) {
+                var letters = '0123456789ABCDEF';
+                var color = '#';
+                for (var i = 0; i < 6; i++) {
+                  color += letters[Math.floor(Math.random() * 16)];
+                }
+                bgColor = color;
+                return bgColor;
+            }
+            
+        }
     });
 };
 
 colorBtns();
-
-//generate random color
-function generateRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
 
 //refresh window
 function refreshGame() {
