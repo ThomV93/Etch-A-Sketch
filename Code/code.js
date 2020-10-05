@@ -1,4 +1,4 @@
-//create and cash all variables
+//create and cash all variables used
 let bgColor
 const btnsContainer_div = document.getElementById("btns-container");
 const colorBtnsContainer_div = document.getElementById("color-btns-container")
@@ -25,52 +25,61 @@ function createGrid(rows, cols) {
     };
 };
 
-//adds event listeners for the grid buttons
+//generate random hex number for each cell hovered over
+function rainbowCreator() {
+    for (i = 0; i < gridCells.length; i++) {
+        gridCells[i].onmouseover = () => {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+              color += letters[Math.floor(Math.random() * 16)];
+            }
+            bgColor = color;
+            return bgColor;
+        };
+    };
+};
+
+//adds event listeners to grid buttons and create the grid according to user choice
 function gridBtns() {
-    sixteen_btn.addEventListener("click", function() {
-        this.classList.add("playing");
-        createGrid(16, 16);
-    }, {once : true});
-
-    thirtyTwo_btn.addEventListener("click", function() {
-        this.classList.add("playing");
-        createGrid(32, 32);
-    }, {once : true});
-
-    sixtyFour_btn.addEventListener("click", function() {
-        this.classList.add("playing");
-        createGrid(64, 64);
-    }, {once : true});
+    gridBtns_div.forEach(btn => btn.addEventListener("click", e => {
+        switch (e.target.id) {
+            case "16x":
+                sixteen_btn.classList.add("playing");//adds transition class
+                createGrid(16, 16);
+                break;
+            case "32x":
+                thirtyTwo_btn.classList.add("playing");
+                createGrid(32, 32);
+                break;
+            case "64x":
+                sixtyFour_btn.classList.add("playing");
+                createGrid(64, 64);
+                break;
+        };
+    }));
 };
 
 gridBtns();
 
-//adds event listeners for the color buttons
+//adds event listeners to color buttons and change the background according to user choice
 function colorBtns() {
-    black_btn.addEventListener("click", e => {
-        black_btn.classList.add("playing");
-        bgColor = `${e.target.id}`;
-    });
-
-    white_btn.addEventListener("click", e => {
-        white_btn.classList.add("playing");
-        bgColor = `${e.target.id}`;
-    });
-
-    rainbow_btn.addEventListener("click", () => {
-        rainbow_btn.classList.add("playing");
-        for (i = 0; i < gridCells.length; i++) {
-            gridCells[i].onmouseover = () => {
-                var letters = '0123456789ABCDEF';
-                var color = '#';
-                for (var i = 0; i < 6; i++) {
-                  color += letters[Math.floor(Math.random() * 16)];
-                }
-                bgColor = color;
-                return bgColor;
-            }      
-        }
-    });
+    colorBtns_div.forEach(btn => btn.addEventListener("click", e => {
+        switch (e.target.id) {
+            case "black":
+                black_btn.classList.add("playing");
+                bgColor = `${e.target.id}`;
+                break;
+            case "white":
+                white_btn.classList.add("playing");
+                bgColor = `${e.target.id}`;
+                break;
+            case "rainbow":
+                rainbow_btn.classList.add("playing");
+                rainbowCreator();
+                break;
+        };
+    }));
 };
 
 colorBtns();
@@ -96,6 +105,6 @@ function removeTransition(e) {
     this.classList.remove("playing");
 }
 
-//event to remove the transition
+//event to remove the transition for the respective buttons
 gridBtns_div.forEach(btn => btn.addEventListener("transitionend", removeTransition));
 colorBtns_div.forEach(btn => btn.addEventListener("transitionend", removeTransition));
