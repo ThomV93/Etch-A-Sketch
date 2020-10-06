@@ -2,7 +2,7 @@
     --grid-rows: 1;
     --grid-cols: 1;
     --pink-neon: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #d84979, 0 0 20px #d84979, 0 0 25px #d84979, 0 0 30px #d84979, 0 0 35px #d84979;
-    --blue-neon: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #3c96eb, 0 0 20px #3c96eb, 0 0 25px #3c96eb, 0 0 30px #3c96eb, 0 0 35px #3c96eb;
+    --blue-neon: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #3c96eb, 0 0 20px #3c96eb, 0 0 25px #3c96eb;
     --white-neon: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fff;
 }
 
@@ -34,7 +34,7 @@ p {
     justify-content: space-around;
     align-items: center;
     height: 13vh;
-    width: 90vw;
+    width: 70vw;
     margin-left: auto;
     margin-right: auto;
 }
@@ -44,7 +44,7 @@ p {
     flex-direction: row;
     justify-content: space-around;
     height: 3vh;
-    width: 500px;
+    width: 400px;
     margin-right: -50px;
 }
 
@@ -67,7 +67,7 @@ p {
     flex-direction: row;
     justify-content: space-around;
     height: 3vh;
-    width: 500px;
+    width: 400px;
     margin-left: -50px;
 }
 
@@ -90,11 +90,12 @@ p {
     grid-template-rows: repeat(var(--grid-rows), 1fr);
     grid-template-columns: repeat(var(--grid-cols), 1fr);
     box-sizing: border-box;
-    margin-top: 50px;
-    width: 900px;
+    margin-top: 60px;
+    width: 800px;
     height: 500px;
     margin-right: auto;
     margin-left: auto;
+    box-shadow: var(--white-neon);
 }
 
 .grid-item {

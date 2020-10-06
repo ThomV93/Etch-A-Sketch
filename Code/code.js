@@ -11,12 +11,11 @@ const sixteen_btn = document.getElementById("16x");
 const thirtyTwo_btn = document.getElementById("32x");
 const sixtyFour_btn = document.getElementById("64x");
 const gridContainer_div = document.getElementById("grid-container");
-const gridCells = document.getElementsByClassName("grid-item");
-
+const gridCells_div = document.getElementsByClassName("grid-item");
 
 //create a dynamic grid based on the user choice
 function createGrid(rows, cols) {
-    gridContainer_div.style.setProperty("--grid-rows", rows);
+    gridContainer_div.style.setProperty("--grid-rows", rows);//set CSS variable with fallback values
     gridContainer_div.style.setProperty("--grid-cols", cols);
     for (i = 0; i < (rows*cols); i++) {
         let cell = document.createElement("div");
@@ -25,34 +24,31 @@ function createGrid(rows, cols) {
     };
 };
 
-//generate random hex number for each cell hovered over
-function rainbowCreator() {
-    for (i = 0; i < gridCells.length; i++) {
-        gridCells[i].onmouseover = () => {
-            var letters = '0123456789ABCDEF';
-            var color = '#';
-            for (var i = 0; i < 6; i++) {
-              color += letters[Math.floor(Math.random() * 16)];
-            }
-            bgColor = color;
-            return bgColor;
-        };
-    };
-};
+createGrid(16, 16); //Start with a deafault 16x16 grid
+
+//remove current grid before adding a new one
+function removeGrid() {
+    while(gridCells_div.length) {
+        gridContainer_div.removeChild(gridContainer_div.lastChild);
+    }
+}
 
 //adds event listeners to grid buttons and create the grid according to user choice
 function gridBtns() {
     gridBtns_div.forEach(btn => btn.addEventListener("click", e => {
         switch (e.target.id) {
             case "16x":
+                removeGrid();
                 sixteen_btn.classList.add("playing");//adds transition class
                 createGrid(16, 16);
                 break;
             case "32x":
+                removeGrid();
                 thirtyTwo_btn.classList.add("playing");
                 createGrid(32, 32);
                 break;
             case "64x":
+                removeGrid();
                 sixtyFour_btn.classList.add("playing");
                 createGrid(64, 64);
                 break;
@@ -68,11 +64,11 @@ function colorBtns() {
         switch (e.target.id) {
             case "black":
                 black_btn.classList.add("playing");
-                bgColor = `${e.target.id}`;
+                bgColor = "black";
                 break;
             case "white":
                 white_btn.classList.add("playing");
-                bgColor = `${e.target.id}`;
+                bgColor = "white";
                 break;
             case "rainbow":
                 rainbow_btn.classList.add("playing");
@@ -83,6 +79,21 @@ function colorBtns() {
 };
 
 colorBtns();
+
+//generate random hex number for each cell hovered over
+function rainbowCreator() {
+    for (i = 0; i < gridCells_div.length; i++) {
+        gridCells_div[i].onmouseover = () => {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+              color += letters[Math.floor(Math.random() * 16)];
+            };
+            bgColor = `${color}`;
+            return bgColor;
+        };
+    };
+};
 
 //refresh window
 function refreshGame() {
