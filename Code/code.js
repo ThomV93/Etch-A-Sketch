@@ -72,7 +72,7 @@ function colorBtns() {
                 break;
             case "rainbow":
                 rainbow_btn.classList.add("playing");
-                rainbowCreator();
+                bgColor = rainbowCreator();
                 break;
         };
     }));
@@ -84,28 +84,27 @@ colorBtns();
 function rainbowCreator() {
     for (i = 0; i < gridCells_div.length; i++) {
         gridCells_div[i].onmouseover = () => {
-            var letters = '0123456789ABCDEF';
-            var color = '#';
-            for (var i = 0; i < 6; i++) {
+            let letters = '0123456789ABCDEF';
+            let color = '#';
+            for (i = 0; i < 6; i++) {
               color += letters[Math.floor(Math.random() * 16)];
             };
-            bgColor = `${color}`;
+            bgColor = color.toString();
             return bgColor;
         };
     };
 };
 
-//refresh window
-function refreshGame() {
-    window.location.reload();
-}
+function clearBg() {
+    Array.from(gridCells_div).forEach(cell => cell.style.backgroundColor = "white");
+};
 
 //Button to reset the game refreshing the browser window
 function replayButton() {
     let replayBtn = document.createElement("button");
     replayBtn.innerHTML = "Reset"
     btnsContainer_div.insertBefore(replayBtn, colorBtnsContainer_div);
-    replayBtn.addEventListener("click", refreshGame);
+    replayBtn.addEventListener("click", clearBg);
 }
 
 replayButton();
