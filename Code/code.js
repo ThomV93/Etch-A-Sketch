@@ -80,21 +80,18 @@ function colorBtns() {
 
 colorBtns();
 
-//generate random hex number for each cell hovered over
+//generate random RGB value for each cell hovered over
 function rainbowCreator() {
     for (i = 0; i < gridCells_div.length; i++) {
         gridCells_div[i].onmouseover = () => {
-            let letters = '0123456789ABCDEF';
-            let color = '#';
-            for (i = 0; i < 6; i++) {
-              color += letters[Math.floor(Math.random() * 16)];
-            };
-            bgColor = color.toString();
+            let r = () => Math.random() * 256 >> 0;
+            bgColor = `rgb(${r()}, ${r()}, ${r()})`;
             return bgColor;
         };
     };
 };
 
+//clear the grid painting it all white again
 function clearBg() {
     Array.from(gridCells_div).forEach(cell => cell.style.backgroundColor = "white");
 };
