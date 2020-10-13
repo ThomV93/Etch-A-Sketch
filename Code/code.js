@@ -64,15 +64,15 @@ function colorBtns() {
         switch (e.target.id) {
             case "black":
                 black_btn.classList.add("playing");
-                bgColor = "black";
+                blackGenerator();
                 break;
             case "white":
                 white_btn.classList.add("playing");
-                bgColor = "white";
+                whiteGenerator();
                 break;
             case "rainbow":
                 rainbow_btn.classList.add("playing");
-                bgColor = rainbowCreator();
+                rainbowGenerator();
                 break;
         };
     }));
@@ -80,8 +80,24 @@ function colorBtns() {
 
 colorBtns();
 
+function blackGenerator() {
+    for (i = 0; i < gridCells_div.length; i++) {
+        gridCells_div[i].onmouseover = () => {
+            bgColor = "black";
+        };
+    };
+};
+
+function whiteGenerator() {
+    for (i = 0; i < gridCells_div.length; i++) {
+        gridCells_div[i].onmouseover = () => {
+            bgColor = "white";
+        };
+    };
+};
+
 //generate random RGB value for each cell hovered over
-function rainbowCreator() {
+function rainbowGenerator() {
     for (i = 0; i < gridCells_div.length; i++) {
         gridCells_div[i].onmouseover = () => {
             let r = () => Math.random() * 256 >> 0;
