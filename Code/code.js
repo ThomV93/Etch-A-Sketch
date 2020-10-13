@@ -19,12 +19,10 @@ function createGrid(rows, cols) {
     gridContainer_div.style.setProperty("--grid-cols", cols);
     for (i = 0; i < (rows*cols); i++) {
         let cell = document.createElement("div");
-        cell.addEventListener("mouseover", () => { cell.style.backgroundColor = bgColor;})
+        cell.addEventListener("mouseover", () => { cell.style.backgroundColor = bgColor;});
         gridContainer_div.appendChild(cell).className = "grid-item";
     };
 };
-
-createGrid(16, 16); //Start with a deafault 16x16 grid
 
 //remove current grid before adding a new one
 function removeGrid() {
@@ -35,7 +33,7 @@ function removeGrid() {
 
 //adds event listeners to grid buttons and create the grid according to user choice
 function gridBtns() {
-    gridBtns_div.forEach(btn => btn.addEventListener("click", e => {
+    Array.from(gridBtns_div).map(btn => btn.addEventListener("click", e => {
         switch (e.target.id) {
             case "16x":
                 removeGrid();
@@ -56,11 +54,9 @@ function gridBtns() {
     }));
 };
 
-gridBtns();
-
 //adds event listeners to color buttons and change the background according to user choice
 function colorBtns() {
-    colorBtns_div.forEach(btn => btn.addEventListener("click", e => {
+    Array.from(colorBtns_div).map(btn => btn.addEventListener("click", e => {
         switch (e.target.id) {
             case "black":
                 black_btn.classList.add("playing");
@@ -78,8 +74,7 @@ function colorBtns() {
     }));
 };
 
-colorBtns();
-
+//generate white background for each cell hovered over
 function blackGenerator() {
     for (i = 0; i < gridCells_div.length; i++) {
         gridCells_div[i].onmouseover = () => {
@@ -88,6 +83,7 @@ function blackGenerator() {
     };
 };
 
+//generate white background for each cell hovered over
 function whiteGenerator() {
     for (i = 0; i < gridCells_div.length; i++) {
         gridCells_div[i].onmouseover = () => {
@@ -109,7 +105,7 @@ function rainbowGenerator() {
 
 //clear the grid painting it all white again
 function clearBg() {
-    Array.from(gridCells_div).forEach(cell => cell.style.backgroundColor = "white");
+    Array.from(gridCells_div).map(cell => cell.style.backgroundColor = "white");
 };
 
 //Button to reset the game refreshing the browser window
@@ -120,8 +116,6 @@ function replayButton() {
     replayBtn.addEventListener("click", clearBg);
 }
 
-replayButton();
-
 //remove the click event transition after the transform ends
 function removeTransition(e) {
     if (e.propertyName !== "transform") return; //skip the property name if it is not a transform
@@ -131,3 +125,12 @@ function removeTransition(e) {
 //event to remove the transition for the respective buttons
 gridBtns_div.forEach(btn => btn.addEventListener("transitionend", removeTransition));
 colorBtns_div.forEach(btn => btn.addEventListener("transitionend", removeTransition));
+
+
+createGrid(16, 16); //Start with a deafault 16x16 grid
+
+gridBtns(); //Event listeners and subsequent actions dependending on grid button selected by the user
+
+colorBtns(); //Event listeners and subsequent actions dependending on grid button selected by the user
+
+replayButton(); //button to reset the background color for divs in the grid
